@@ -3,7 +3,29 @@
   <!-- AOS Animate On Scroll JS -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <style>
-    .animate-fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s, transform 0.8s; }
+    .animate-fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s, transform 0.8s  <div class="t  <div class="testimonial-card card-hover rounded-xl shadow-md p-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="flex items-center mb-4">
+            <i class="ph ph-star-fill text-yellow-400 text-xl"></i>
+            <i class="ph ph-star-fill text-yellow-400 text-xl"></i>
+            <i class="ph ph-star-fill text-yellow-400 text-xl"></i>
+            <i class="ph ph-star-fill text-yellow-400 text-xl"></i>
+            <i class="ph ph-star-fill text-yellow-400 text-xl"></i>
+            <span class="ml-2 text-sm text-gray-600">5.0</span>
+          </div>
+          <p class="text-gray-800 mb-3">"गुणवत्तेवर पूर्ण विश्वास! पारंपरिक चवीसाठी मी फक्त सार्थक मसालेच वापरते."</p>
+          <span class="text-green-700 font-semibold">- मंगला पाटील</span>
+        </div>monial-card card-hover rounded-xl shadow-md p-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="flex items-center mb-4">
+            <i class="ph ph-star-fill text-yellow-400 text-xl"></i>
+            <i class="ph ph-star-fill text-yellow-400 text-xl"></i>
+            <i class="ph ph-star-fill text-yellow-400 text-xl"></i>
+            <i class="ph ph-star-fill text-yellow-400 text-xl"></i>
+            <i class="ph ph-star-fill text-yellow-400 text-xl"></i>
+            <span class="ml-2 text-sm text-gray-600">5.0</span>
+          </div>
+          <p class="text-gray-800 mb-3">"सार्थक मसाल्यांचा सुवास आणि चव अप्रतिम आहे. माझ्या स्वयंपाकघरात नेहमीच असतात!"</p>
+          <span class="text-green-700 font-semibold">- स्नेहा देशमुख</span>
+        </div>
     .animate-fade-in.visible { opacity: 1 !important; transform: none !important; }
     .animate-bounce { animation: bounce 1.2s infinite alternate; }
     @keyframes bounce { 0% { transform: translateY(0); } 100% { transform: translateY(-10px); } }
@@ -38,15 +60,78 @@
     .theme-dark .bg-gradient-to-br { background: linear-gradient(135deg, #232323 0%, #27272a 100%) !important; }
     .theme-dark .bg-orange-500 { background: #ff8800 !important; }
     .theme-dark .text-white { color: #fff !important; }
+    
+    /* Enhanced Styles */
+    .gradient-text {
+      background: linear-gradient(135deg, #f59e0b, #f97316, #dc2626);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .floating {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .card-hover {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .testimonial-card {
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+    }
+    
+    .pulse-glow {
+      animation: pulse-glow 2s infinite;
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 5px rgba(34, 197, 94, 0.4); }
+      50% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.8), 0 0 30px rgba(34, 197, 94, 0.4); }
+    }
     .theme-dark .text-gray-900 { color: #f3f4f6 !important; }
     .theme-dark .text-gray-700 { color: #e5e7eb !important; }
     .theme-dark .bg-white { background: #232323 !important; }
     .theme-dark .shadow-inner { box-shadow: 0 2px 8px 0 #0002 inset !important; }
     .theme-dark .rounded-3xl, .theme-dark .rounded-xl, .theme-dark .rounded-full { border-radius: 1.5rem !important; }
     .theme-dark .border-4 { border-width: 2px !important; }
+    .floating { animation: floating 3s ease-in-out infinite; }
+    @keyframes floating { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+    .gradient-text { background: linear-gradient(45deg, #f97316, #eab308, #22c55e); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    /* Mobile improvements */
+    @media (max-width: 640px) {
+      .spice-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .product-grid { grid-template-columns: repeat(1, 1fr) !important; }
+      .machine-grid { grid-template-columns: repeat(1, 1fr) !important; }
+      .hero-buttons { flex-direction: column; gap: 0.5rem; }
+    }
   </style>
 </head>
   <body class="bg-yellow-50 text-gray-900">
+  
+  <!-- Floating WhatsApp Button -->
+  <div class="fixed bottom-6 right-6 z-50">
+    <a href="https://wa.me/9527438355" target="_blank" class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110" style="animation: floating 3s ease-in-out infinite;">
+      <i class="ph ph-whatsapp-logo text-2xl"></i>
+    </a>
+  </div>
+  
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       AOS.init({
@@ -62,36 +147,43 @@
   <section id="home" class="bg-gradient-to-br from-orange-200 via-yellow-100 to-green-200 py-12 md:py-20" data-aos="fade-up">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center px-6 gap-10">
       <div class="flex-1">
-  <h1 class="text-4xl md:text-5xl font-extrabold text-orange-600 mb-4 animate-bounce">सार्थक मसाले</h1>
-  <p class="text-2xl md:text-3xl text-yellow-700 font-semibold mb-6 animate-fade-in">चव आणि सुवास यांचा सार्थक अनुभव</p>
-  <a href="#products" class="inline-block bg-gradient-to-r from-orange-500 via-yellow-400 to-green-500 hover:from-orange-600 hover:to-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 scale-100 hover:scale-105 animate-fade-in">आमची उत्पादने पहा</a>
+        <h1 class="text-4xl md:text-6xl font-extrabold text-orange-600 mb-4 animate-bounce gradient-text">सार्थक मसाले</h1>
+        <p class="text-xl md:text-2xl text-yellow-700 font-semibold mb-6">चव आणि सुवास यांचा सार्थक अनुभव</p>
+        <div class="flex flex-col sm:flex-row gap-4 hero-buttons">
+          <a href="#products" class="inline-block bg-gradient-to-r from-orange-500 via-yellow-400 to-green-500 hover:from-orange-600 hover:to-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 scale-100 hover:scale-105 text-center">
+            <i class="ph ph-shopping-bag mr-2"></i>आमची उत्पादने पहा
+          </a>
+          <a href="#contact" class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 text-center">
+            <i class="ph ph-phone mr-2"></i>संपर्क करा
+          </a>
+        </div>
       </div>
       <div class="flex-1 flex justify-center">
         <img src="https://scontent.fpnq13-5.fna.fbcdn.net/v/t39.30808-6/347224976_249808424324859_3158281083936601602_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=paE2yjDAOZcQ7kNvwEapHaM&_nc_oc=Adn9d-zmRiTZiMvFDfBbYJoFhz_TaOu93u6CjrGW4ASheH1ucS8LKmyrZJyamjhR-2bsrVs6Qtym0iA3dTlrVBPw&_nc_zt=23&_nc_ht=scontent.fpnq13-5.fna&_nc_gid=o0Xq301hUfha-Flq7_xfEg&oh=00_AfUATASS3n9MkL43FPjVoBLHtXB0OvsOf-zzxsq4gcsmhg&oe=68A7EB85" alt="मसाल्यांचे चित्र" class="rounded-3xl shadow-2xl border-4 border-yellow-300 w-full max-w-md">
       </div>
     </div>
-    <!-- Spice Images Grid -->
-    <div class="max-w-5xl mx-auto mt-12 mb-4">
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
-        <div class="flex flex-col items-center bg-gradient-to-br from-orange-100 to-yellow-200 rounded-xl shadow-lg p-4 hover:scale-105 transition-all duration-300 animate-fade-in">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTh0PgoK42-Huaq7Qz80Oh0Lm85lV5ytyADMxS1cQw0jwailYRR97-uRKMrLTGtY5c8gTs&usqp=CAU" alt="मसाले १" class="w-32 h-32 object-cover rounded-full border-4 border-orange-300 mb-3">
-          <span class="text-lg font-semibold text-orange-700 flex items-center gap-2"><i class="ph ph-fire text-orange-500"></i>मसाले</span>
+    <!-- Enhanced Spice Images Grid -->
+    <div class="max-w-6xl mx-auto mt-12 mb-4">
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 spice-grid">
+        <div class="flex flex-col items-center bg-gradient-to-br from-orange-100 to-yellow-200 rounded-xl shadow-lg p-4 hover:scale-105 transition-all duration-300" data-aos="zoom-in" data-aos-delay="100">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTh0PgoK42-Huaq7Qz80Oh0Lm85lV5ytyADMxS1cQw0jwailYRR97-uRKMrLTGtY5c8gTs&usqp=CAU" alt="मसाले १" class="w-20 h-20 sm:w-28 sm:h-28 object-cover rounded-full border-4 border-orange-300 mb-3">
+          <span class="text-sm sm:text-lg font-semibold text-orange-700 text-center">🌶️ मसाले</span>
         </div>
-        <div class="flex flex-col items-center bg-gradient-to-br from-yellow-100 to-orange-100 rounded-xl shadow-lg p-4 hover:scale-105 transition-all duration-300 animate-fade-in">
-          <img src="https://wd-image.webdunia.com/image-conversion/process-aws.php?url=https://nonprod-media.webdunia.com/public_html/_media/hi/img/article/2017-05/19/full/1495176720-0012.jpg&w=&h=&outtype=webp" alt="मसाले २" class="w-32 h-32 object-cover rounded-full border-4 border-yellow-300 mb-3">
-          <span class="text-lg font-semibold text-yellow-700 flex items-center gap-2"><i class="ph ph-lightning text-yellow-500"></i>मसाले बनवण्याच्या गोष्टी</span>
+        <div class="flex flex-col items-center bg-gradient-to-br from-yellow-100 to-orange-100 rounded-xl shadow-lg p-4 hover:scale-105 transition-all duration-300" data-aos="zoom-in" data-aos-delay="200">
+          <img src="https://wd-image.webdunia.com/image-conversion/process-aws.php?url=https://nonprod-media.webdunia.com/public_html/_media/hi/img/article/2017-05/19/full/1495176720-0012.jpg&w=&h=&outtype=webp" alt="मसाले २" class="w-20 h-20 sm:w-28 sm:h-28 object-cover rounded-full border-4 border-yellow-300 mb-3">
+          <span class="text-sm sm:text-lg font-semibold text-yellow-700 text-center">⚡ पिसण्याच्या गोष्टी</span>
         </div>
-        <div class="flex flex-col items-center bg-gradient-to-br from-green-100 to-yellow-100 rounded-xl shadow-lg p-4 hover:scale-105 transition-all duration-300 animate-fade-in">
-          <img src="https://cpimg.tistatic.com/06951204/b/4/Dry-Masala.jpg" alt="मसाले ३" class="w-32 h-32 object-cover rounded-full border-4 border-green-300 mb-3">
-          <span class="text-lg font-semibold text-green-700 flex items-center gap-2"><i class="ph ph-leaf text-green-500"></i>ड्राय मसाले</span>
+        <div class="flex flex-col items-center bg-gradient-to-br from-green-100 to-yellow-100 rounded-xl shadow-lg p-4 hover:scale-105 transition-all duration-300" data-aos="zoom-in" data-aos-delay="300">
+          <img src="https://cpimg.tistatic.com/06951204/b/4/Dry-Masala.jpg" alt="मसाले ३" class="w-20 h-20 sm:w-28 sm:h-28 object-cover rounded-full border-4 border-green-300 mb-3">
+          <span class="text-sm sm:text-lg font-semibold text-green-700 text-center">🌿 ड्राय मसाले</span>
         </div>
-        <div class="flex flex-col items-center bg-gradient-to-br from-orange-100 to-yellow-200 rounded-xl shadow-lg p-4 hover:scale-105 transition-all duration-300 animate-fade-in">
-          <img src="https://www.consciousfood.com/cdn/shop/files/4_01f2b5e9-64c8-4e4b-9798-d4aa4f715da1.jpg?v=1703313927&width=1445" alt="मसाले ४" class="w-32 h-32 object-cover rounded-full border-4 border-orange-400 mb-3">
-          <span class="text-lg font-semibold text-orange-700 flex items-center gap-2"><i class="ph ph-sun text-yellow-400"></i>हळद पावडर</span>
+        <div class="flex flex-col items-center bg-gradient-to-br from-orange-100 to-yellow-200 rounded-xl shadow-lg p-4 hover:scale-105 transition-all duration-300" data-aos="zoom-in" data-aos-delay="400">
+          <img src="https://www.consciousfood.com/cdn/shop/files/4_01f2b5e9-64c8-4e4b-9798-d4aa4f715da1.jpg?v=1703313927&width=1445" alt="मसाले ४" class="w-20 h-20 sm:w-28 sm:h-28 object-cover rounded-full border-4 border-orange-400 mb-3">
+          <span class="text-sm sm:text-lg font-semibold text-orange-700 text-center">☀️ हळद पावडर</span>
         </div>
-        <div class="flex flex-col items-center bg-gradient-to-br from-red-100 to-yellow-100 rounded-xl shadow-lg p-4 hover:scale-105 transition-all duration-300 animate-fade-in">
-          <img src="https://5.imimg.com/data5/SELLER/Default/2024/4/412549946/OZ/GF/TY/6930772/lal-mirch-powder.jpeg" alt="मसाले ५" class="w-32 h-32 object-cover rounded-full border-4 border-red-400 mb-3">
-          <span class="text-lg font-semibold text-red-700 flex items-center gap-2"><i class="ph ph-flame text-red-500"></i>लाल मिरची पावडर</span>
+        <div class="flex flex-col items-center bg-gradient-to-br from-red-100 to-yellow-100 rounded-xl shadow-lg p-4 hover:scale-105 transition-all duration-300 col-span-2 sm:col-span-1" data-aos="zoom-in" data-aos-delay="500">
+          <img src="https://5.imimg.com/data5/SELLER/Default/2024/4/412549946/OZ/GF/TY/6930772/lal-mirch-powder.jpeg" alt="मसाले ५" class="w-20 h-20 sm:w-28 sm:h-28 object-cover rounded-full border-4 border-red-400 mb-3">
+          <span class="text-sm sm:text-lg font-semibold text-red-700 text-center">🔥 लाल मिरची पावडर</span>
         </div>
       </div>
     </div>
@@ -122,7 +214,7 @@
   <!-- Products Section -->
   <section id="products" class="py-14 bg-gradient-to-br from-yellow-50 via-orange-50 to-green-50" data-aos="fade-up">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-orange-600 text-center mb-10">उत्पादने</h2>
+      <h2 class="text-3xl font-bold text-orange-600 text-center mb-10">उत्पादने आणि सेवा</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         <!-- Product 1 -->
   <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center" data-aos="flip-left" data-aos-duration="1000">
@@ -219,30 +311,35 @@
   <!-- Recipes Section -->
   <section id="recipes" class="py-14 bg-white" data-aos="fade-up">
     <div class="max-w-5xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-orange-600 text-center mb-10">रेसिपी</h2>
+      <h2 class="text-3xl font-bold text-orange-600 text-center mb-10">पारंपरिक रेसिपी</h2>
       <div class="grid md:grid-cols-3 gap-8">
-        <!-- Recipe 1 -->
-  <div class="bg-yellow-50 rounded-xl shadow-md p-6" data-aos="zoom-in" data-aos-delay="100">
-          <h3 class="text-xl font-semibold text-orange-700 mb-2">मिसळ पाव</h3>
-          <ul class="list-disc list-inside text-gray-700 mb-2">
+        <div class="bg-yellow-50 rounded-xl shadow-md p-6 hover:shadow-lg transition-all duration-300" data-aos="zoom-in" data-aos-delay="100">
+          <h3 class="text-xl font-semibold text-orange-700 mb-4 flex items-center gap-2">
+            <i class="ph ph-bowl-food text-orange-500"></i>मिसळ पाव
+          </h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1">
             <li>सार्थक लाल तिखट वापरून मिसळ तयार करा.</li>
             <li>फोडणीसाठी हळद पावडर आणि गरम मसाला घाला.</li>
             <li>पावासोबत गरमागरम सर्व्ह करा.</li>
           </ul>
         </div>
-        <!-- Recipe 2 -->
-  <div class="bg-yellow-50 rounded-xl shadow-md p-6" data-aos="zoom-in" data-aos-delay="200">
-          <h3 class="text-xl font-semibold text-orange-700 mb-2">झणझणीत भाजी</h3>
-          <ul class="list-disc list-inside text-gray-700 mb-2">
+        
+        <div class="bg-yellow-50 rounded-xl shadow-md p-6 hover:shadow-lg transition-all duration-300" data-aos="zoom-in" data-aos-delay="200">
+          <h3 class="text-xl font-semibold text-orange-700 mb-4 flex items-center gap-2">
+            <i class="ph ph-cooking-pot text-orange-500"></i>झणझणीत भाजी
+          </h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1">
             <li>भाजीत सार्थक हळद पावडर आणि लाल तिखट वापरा.</li>
             <li>गरम मसाला शेवटी घालून छान मिसळा.</li>
             <li>गरम भातासोबत सर्व्ह करा.</li>
           </ul>
         </div>
-        <!-- Recipe 3 -->
-  <div class="bg-yellow-50 rounded-xl shadow-md p-6" data-aos="zoom-in" data-aos-delay="300">
-          <h3 class="text-xl font-semibold text-orange-700 mb-2">मसाले भात</h3>
-          <ul class="list-disc list-inside text-gray-700 mb-2">
+        
+        <div class="bg-yellow-50 rounded-xl shadow-md p-6 hover:shadow-lg transition-all duration-300" data-aos="zoom-in" data-aos-delay="300">
+          <h3 class="text-xl font-semibold text-orange-700 mb-4 flex items-center gap-2">
+            <i class="ph ph-grain text-orange-500"></i>मसाले भात
+          </h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1">
             <li>भात शिजवताना सार्थक गरम मसाला आणि हळद पावडर घाला.</li>
             <li>थोडे लाल तिखट स्वादानुसार वापरा.</li>
             <li>कोथिंबीर घालून सजवा.</li>
@@ -250,9 +347,7 @@
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- Testimonials -->
+  </section>  <!-- Testimonials -->
   <section class="py-14 bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50" data-aos="fade-up">
     <div class="max-w-4xl mx-auto px-6">
       <h2 class="text-3xl font-bold text-orange-600 text-center mb-10">ग्राहक अभिप्राय</h2>
@@ -307,11 +402,11 @@
     </div>
   </section>
   <!-- Contact Section -->
-  <section id="contact" class="py-14 bg-white" data-aos="fade-up">
+  <section id="contact" class="py-14 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50" data-aos="fade-up">
     <div class="max-w-3xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-orange-600 text-center mb-8">संपर्क</h2>
+      <h2 class="text-3xl font-bold text-orange-600 text-center mb-8 gradient-text">संपर्क</h2>
       <!-- Owner Names Section -->
-  <div class="bg-gradient-to-r from-orange-400 via-yellow-200 to-green-300 rounded-2xl shadow-2xl p-8 mb-6 flex flex-col items-center border-4 border-yellow-400 scale-105" data-aos="zoom-in">
+  <div class="testimonial-card rounded-2xl shadow-2xl p-8 mb-6 flex flex-col items-center border-4 border-yellow-400 pulse-glow" data-aos="zoom-in">
         <h3 class="text-2xl font-extrabold text-orange-900 mb-2 flex items-center gap-2"><i class="ph ph-user-circle text-3xl text-orange-700"></i>मालकांची नावे <span class="bg-green-500 text-white px-3 py-1 rounded-full text-base ml-2 animate-pulse">Owner</span></h3>
         <ul class="text-xl text-gray-900 font-bold">
           <li>श्री विजय विठ्ठल दाते</li>
