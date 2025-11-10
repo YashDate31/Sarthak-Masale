@@ -36,6 +36,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>सार्थक मसाले - मुख्यपृष्ठ</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="सार्थक मसाले - शुद्ध आणि पारंपरिक मसाले, हळद पावडर, लाल तिखट, गरम मसाला, शेवई, पापड आणि बरेच काही. अणे, जुन्नर, पुणे येथील विश्वासार्ह मसाले विक्रेते.">
+  <meta name="keywords" content="सार्थक मसाले, मसाले, हळद पावडर, लाल तिखट, गरम मसाला, शेवई, पापड, अणे, जुन्नर, पुणे, शुद्ध मसाले">
+  <meta name="author" content="सार्थक मसाले">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="सार्थक मसाले - शुद्ध आणि पारंपरिक मसाले">
+  <meta property="og:description" content="चव आणि सुवास यांचा सार्थक अनुभव - शुद्ध मसाले आणि उत्पादने">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://i.ibb.co/yBFTmsvJ/sarthak-masale.jpg">
+  
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&family=Tiro+Devanagari+Marathi&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
@@ -120,10 +132,197 @@
       .product-grid { grid-template-columns: repeat(1, 1fr) !important; }
       .machine-grid { grid-template-columns: repeat(1, 1fr) !important; }
       .hero-buttons { flex-direction: column; gap: 0.5rem; }
+      .price-table-container { overflow-x: auto; }
+    }
+    
+    /* Navbar Styles */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    
+    nav.scrolled {
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Mobile Menu Styles */
+    .mobile-menu-btn {
+      display: none;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100vh;
+      background: linear-gradient(135deg, #f97316, #eab308, #22c55e);
+      z-index: 1000;
+      transition: right 0.3s ease-in-out;
+      overflow-y: auto;
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .mobile-menu.active {
+      right: 0;
+    }
+    
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block !important;
+      }
+    }
+    
+    @media (min-width: 769px) {
+      .mobile-menu {
+        display: none;
+      }
+      
+      .mobile-menu-overlay {
+        display: none;
+      }
+    }
+    
+    /* Back to Top Button */
+    #backToTop {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    #backToTop.show {
+      opacity: 1;
+      visibility: visible;
     }
   </style>
 </head>
   <body class="bg-yellow-50 text-gray-900">
+  
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+  
+  <!-- Mobile Slide Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="p-6">
+      <!-- Close Button -->
+      <button class="mobile-menu-close text-white text-3xl mb-6 float-right" id="closeMobileMenu">
+        <i class="ph ph-x"></i>
+      </button>
+      <div class="clear-both"></div>
+      
+      <!-- Logo -->
+      <div class="text-center mb-8">
+        <h2 class="text-2xl font-bold text-white bg-white bg-opacity-20 px-4 py-2 rounded-lg">सार्थक मसाले</h2>
+      </div>
+      
+      <!-- Menu Items -->
+      <ul class="space-y-2">
+        <li>
+          <a href="#home" class="mobile-menu-link flex items-center gap-3 text-white text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white hover:bg-opacity-20 transition-all duration-200">
+            <i class="ph ph-house text-2xl"></i>
+            <span>मुख्यपृष्ठ</span>
+          </a>
+        </li>
+        <li>
+          <a href="#about" class="mobile-menu-link flex items-center gap-3 text-white text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white hover:bg-opacity-20 transition-all duration-200">
+            <i class="ph ph-info text-2xl"></i>
+            <span>आमच्याबद्दल</span>
+          </a>
+        </li>
+        <li>
+          <a href="#products" class="mobile-menu-link flex items-center gap-3 text-white text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white hover:bg-opacity-20 transition-all duration-200">
+            <i class="ph ph-shopping-bag text-2xl"></i>
+            <span>उत्पादने</span>
+          </a>
+        </li>
+        <li>
+          <a href="#price-chart" class="mobile-menu-link flex items-center gap-3 text-white text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white hover:bg-opacity-20 transition-all duration-200">
+            <i class="ph ph-currency-inr text-2xl"></i>
+            <span>दर तक्ता</span>
+          </a>
+        </li>
+        <li>
+          <a href="#recipes" class="mobile-menu-link flex items-center gap-3 text-white text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white hover:bg-opacity-20 transition-all duration-200">
+            <i class="ph ph-cooking-pot text-2xl"></i>
+            <span>रेसिपी</span>
+          </a>
+        </li>
+        <li>
+          <a href="#contact" class="mobile-menu-link flex items-center gap-3 text-white text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white hover:bg-opacity-20 transition-all duration-200">
+            <i class="ph ph-phone text-2xl"></i>
+            <span>संपर्क</span>
+          </a>
+        </li>
+      </ul>
+      
+      <!-- WhatsApp Button in Menu -->
+      <div class="mt-8">
+        <a href="https://wa.me/9527438355" target="_blank" class="flex items-center justify-center gap-2 bg-white text-green-600 font-bold py-3 px-6 rounded-full shadow-lg hover:bg-gray-100 transition-all duration-200">
+          <i class="ph ph-whatsapp-logo text-2xl"></i>
+          <span>WhatsApp वर संपर्क</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Navigation Menu -->
+  <nav id="navbar" class="bg-gradient-to-r from-orange-500 via-yellow-500 to-green-500 text-white shadow-lg">
+    <div class="max-w-6xl mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        <div class="text-2xl font-bold">
+          <span class="bg-white text-orange-600 px-3 py-2 rounded-lg shadow-md">सार्थक मसाले</span>
+        </div>
+        
+        <!-- Desktop Navigation -->
+        <ul class="desktop-nav hidden md:flex flex-wrap items-center justify-center gap-4 md:gap-6 text-sm md:text-base">
+          <li><a href="#home" class="hover:text-yellow-200 transition-colors duration-200 font-semibold flex items-center gap-1">
+            <i class="ph ph-house"></i> मुख्यपृष्ठ</a></li>
+          <li><a href="#about" class="hover:text-yellow-200 transition-colors duration-200 font-semibold flex items-center gap-1">
+            <i class="ph ph-info"></i> आमच्याबद्दल</a></li>
+          <li><a href="#products" class="hover:text-yellow-200 transition-colors duration-200 font-semibold flex items-center gap-1">
+            <i class="ph ph-shopping-bag"></i> उत्पादने</a></li>
+          <li><a href="#price-chart" class="hover:text-yellow-200 transition-colors duration-200 font-semibold flex items-center gap-1">
+            <i class="ph ph-currency-inr"></i> दर तक्ता</a></li>
+          <li><a href="#recipes" class="hover:text-yellow-200 transition-colors duration-200 font-semibold flex items-center gap-1">
+            <i class="ph ph-cooking-pot"></i> रेसिपी</a></li>
+          <li><a href="#contact" class="hover:text-yellow-200 transition-colors duration-200 font-semibold flex items-center gap-1">
+            <i class="ph ph-phone"></i> संपर्क</a></li>
+        </ul>
+        
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn text-white text-3xl md:hidden" id="openMobileMenu">
+          <i class="ph ph-list"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
   
   <!-- Floating WhatsApp Button -->
   <div class="fixed bottom-6 right-6 z-50">
@@ -131,6 +330,11 @@
       <i class="ph ph-whatsapp-logo text-2xl"></i>
     </a>
   </div>
+  
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="bg-orange-500 hover:bg-orange-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110">
+    <i class="ph ph-arrow-up text-2xl"></i>
+  </button>
   
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -142,7 +346,7 @@
       });
     });
   </script>
-  <!-- Navbar removed as per user request -->
+  
   <!-- Hero Section (Home) -->
   <section id="home" class="bg-gradient-to-br from-orange-200 via-yellow-100 to-green-200 py-12 md:py-20" data-aos="fade-up">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center px-6 gap-10">
@@ -312,9 +516,13 @@
   <section id="price-chart" class="py-14 bg-gradient-to-br from-orange-100 via-yellow-100 to-green-100" data-aos="fade-up">
     <div class="max-w-6xl mx-auto px-6">
       <h2 class="text-3xl md:text-4xl font-bold text-orange-600 text-center mb-4">📊 दर तक्ता</h2>
-      <p class="text-center text-gray-700 mb-8 text-lg">आमच्या उत्पादनांचे आजचे दर (रु./किलो)</p>
+      <p class="text-center text-gray-700 mb-2 text-lg">आमच्या उत्पादनांचे आजचे दर (रु./किलो)</p>
+      <p class="text-center text-orange-600 font-semibold mb-8 flex items-center justify-center gap-2">
+        <i class="ph ph-calendar-check"></i>
+        शेवटचे अद्यतन: १० नोव्हेंबर २०२५
+      </p>
       
-      <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border-4 border-orange-300">
+      <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border-4 border-orange-300 price-table-container">
         <div class="overflow-x-auto">
           <table class="w-full">
             <thead class="bg-gradient-to-r from-orange-500 via-yellow-500 to-green-500 text-white">
@@ -456,9 +664,14 @@
         
         <!-- Price Update Note -->
         <div class="bg-gradient-to-r from-yellow-100 to-orange-100 px-6 py-4 border-t-4 border-orange-400">
-          <div class="flex items-center justify-center gap-2 text-gray-800">
-            <i class="ph ph-info text-orange-600 text-2xl"></i>
-            <p class="font-semibold">नोंद: दर बदलू शकतात. ताज्या दरांसाठी संपर्क करा: <span class="text-green-700">📞 9527438355</span></p>
+          <div class="flex flex-col md:flex-row items-center justify-between gap-2 text-gray-800">
+            <div class="flex items-center gap-2">
+              <i class="ph ph-info text-orange-600 text-2xl"></i>
+              <p class="font-semibold text-center md:text-left">नोंद: दर बदलू शकतात. ताज्या दरांसाठी संपर्क करा: <span class="text-green-700">📞 9527438355</span></p>
+            </div>
+            <button onclick="window.print()" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-lg transition-all duration-200 flex items-center gap-2 whitespace-nowrap">
+              <i class="ph ph-printer"></i> प्रिंट करा
+            </button>
           </div>
         </div>
       </div>
@@ -514,7 +727,129 @@
         </div>
       </div>
     </div>
-  </section>  <!-- Testimonials -->
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="py-14 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50" data-aos="fade-up">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-gray-900 text-center mb-4">
+        <i class="ph ph-question text-orange-500"></i> वारंवार विचारले जाणारे प्रश्न
+      </h2>
+      <p class="text-center text-orange-600 font-bold text-xl mb-10">(FAQ)</p>
+      
+      <div class="space-y-4">
+        <!-- FAQ 1 -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+          <details class="group">
+            <summary class="flex items-center justify-between cursor-pointer p-6 hover:bg-orange-50 transition-colors duration-200">
+              <h3 class="text-lg font-bold text-gray-900 flex items-center gap-2">
+                <i class="ph ph-package text-orange-600"></i>
+                किमान ऑर्डर किती असावी?
+              </h3>
+              <i class="ph ph-caret-down text-orange-600 text-xl group-open:rotate-180 transition-transform duration-200"></i>
+            </summary>
+            <div class="px-6 pb-6 text-gray-700">
+              <p>आमच्याकडे कोणतीही किमान ऑर्डर मर्यादा नाही. तुम्ही तुमच्या गरजेनुसार कितीही प्रमाणात ऑर्डर करू शकता. थोक खरेदीसाठी विशेष सूट उपलब्ध आहे.</p>
+            </div>
+          </details>
+        </div>
+        
+        <!-- FAQ 2 -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="150">
+          <details class="group">
+            <summary class="flex items-center justify-between cursor-pointer p-6 hover:bg-orange-50 transition-colors duration-200">
+              <h3 class="text-lg font-bold text-gray-900 flex items-center gap-2">
+                <i class="ph ph-credit-card text-orange-600"></i>
+                पेमेंटच्या कोणत्या पद्धती उपलब्ध आहेत?
+              </h3>
+              <i class="ph ph-caret-down text-orange-600 text-xl group-open:rotate-180 transition-transform duration-200"></i>
+            </summary>
+            <div class="px-6 pb-6 text-gray-700">
+              <p>आम्ही रोख (Cash), UPI, Google Pay, PhonePe, Paytm आणि बँक ट्रान्सफर स्वीकारतो.</p>
+            </div>
+          </details>
+        </div>
+        
+        <!-- FAQ 3 -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="250">
+          <details class="group">
+            <summary class="flex items-center justify-between cursor-pointer p-6 hover:bg-orange-50 transition-colors duration-200">
+              <h3 class="text-lg font-bold text-gray-900 flex items-center gap-2">
+                <i class="ph ph-seal-check text-orange-600"></i>
+                मसाल्यांची गुणवत्ता कशी खात्री करता?
+              </h3>
+              <i class="ph ph-caret-down text-orange-600 text-xl group-open:rotate-180 transition-transform duration-200"></i>
+            </summary>
+            <div class="px-6 pb-6 text-gray-700">
+              <p>आमचे सर्व मसाले शुद्ध, नैसर्गिक आणि निवडक कच्च्या मालापासून तयार केले जातात. आम्ही काटेकोर गुणवत्ता नियंत्रण राखतो आणि पारंपरिक पद्धतीने मसाले तयार करतो.</p>
+            </div>
+          </details>
+        </div>
+        
+        <!-- FAQ 3 -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+          <details class="group">
+            <summary class="flex items-center justify-between cursor-pointer p-6 hover:bg-orange-50 transition-colors duration-200">
+              <h3 class="text-lg font-bold text-gray-900 flex items-center gap-2">
+                <i class="ph ph-seal-check text-orange-600"></i>
+                मसाल्यांची गुणवत्ता कशी खात्री करता?
+              </h3>
+              <i class="ph ph-caret-down text-orange-600 text-xl group-open:rotate-180 transition-transform duration-200"></i>
+            </summary>
+            <div class="px-6 pb-6 text-gray-700">
+              <p>आमचे सर्व मसाले शुद्ध, नैसर्गिक आणि निवडक कच्च्या मालापासून तयार केले जातात. आम्ही काटेकोर गुणवत्ता नियंत्रण राखतो आणि पारंपरिक पद्धतीने मसाले तयार करतो.</p>
+            </div>
+          </details>
+        </div>
+        
+        <!-- FAQ 4 -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="250">
+          <details class="group">
+            <summary class="flex items-center justify-between cursor-pointer p-6 hover:bg-orange-50 transition-colors duration-200">
+              <h3 class="text-lg font-bold text-gray-900 flex items-center gap-2">
+                <i class="ph ph-clock text-orange-600"></i>
+                दुकानाचा व्यवहार वेळ काय आहे?
+              </h3>
+              <i class="ph ph-caret-down text-orange-600 text-xl group-open:rotate-180 transition-transform duration-200"></i>
+            </summary>
+            <div class="px-6 pb-6 text-gray-700">
+              <p><strong>प्रतिदिन:</strong> सकाळी ९:०० ते संध्याकाळी ५:०० वाजता <br>
+              <strong class="text-green-600">✅ दररोज खुले</strong> <br>
+              <em>नोंद: सण-सणांच्या वेळी वेळापत्रक बदलू शकते.</em></p>
+            </div>
+          </details>
+        </div>
+        
+        <!-- FAQ 5 -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+          <details class="group">
+            <summary class="flex items-center justify-between cursor-pointer p-6 hover:bg-orange-50 transition-colors duration-200">
+              <h3 class="text-lg font-bold text-gray-900 flex items-center gap-2">
+                <i class="ph ph-arrows-counter-clockwise text-orange-600"></i>
+                रिटर्न किंवा एक्सचेंज पॉलिसी काय आहे?
+              </h3>
+              <i class="ph ph-caret-down text-orange-600 text-xl group-open:rotate-180 transition-transform duration-200"></i>
+            </summary>
+            <div class="px-6 pb-6 text-gray-700">
+              <p>जर उत्पादनात कोणतीही खराबी असेल तर तुम्ही २४ तासांच्या आत आम्हाला कळवू शकता. आम्ही त्वरित बदली किंवा परतावा प्रदान करू.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+      
+      <!-- Still have questions CTA -->
+      <div class="mt-10 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-2xl shadow-xl p-8 text-center" data-aos="zoom-in">
+        <h3 class="text-2xl font-bold text-white mb-3">अजूनही प्रश्न आहेत?</h3>
+        <p class="text-white text-lg mb-4">आम्हाला संपर्क करण्यास मोकळ्या मनाने संकोच करू नका!</p>
+        <a href="https://wa.me/9527438355?text=नमस्कार, मला काही प्रश्न विचारायचे आहेत" target="_blank" class="inline-flex items-center bg-white hover:bg-gray-100 text-orange-600 font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 hover:scale-105">
+          <i class="ph ph-whatsapp-logo text-2xl mr-2"></i>
+          WhatsApp वर विचारा
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Testimonials -->
   <section class="py-14 bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50" data-aos="fade-up">
     <div class="max-w-4xl mx-auto px-6">
       <h2 class="text-3xl font-bold text-orange-600 text-center mb-10">ग्राहक अभिप्राय</h2>
@@ -600,6 +935,19 @@
           <span class="text-xl">✉️</span>
           <span>ई-मेल: yashdate36@gmail.com</span>
         </div>
+        
+        <!-- Business Hours -->
+        <div class="mt-4 p-4 bg-gradient-to-r from-orange-100 to-yellow-100 rounded-lg border-2 border-orange-300">
+          <h4 class="font-bold text-orange-700 mb-2 flex items-center gap-2">
+            <i class="ph ph-clock-clockwise text-xl"></i>
+            व्यवहार वेळ:
+          </h4>
+          <div class="text-gray-800 space-y-1">
+            <p><strong>प्रतिदिन:</strong> सकाळी ९:०० ते संध्याकाळी ५:०० वाजता</p>
+            <p class="text-green-600 font-semibold">✅ दररोज खुले</p>
+          </div>
+        </div>
+        
         <a href="https://wa.me/9527438355" target="_blank" class="mt-4 inline-flex items-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-full shadow-lg transition w-max">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 12c0-4.556-3.694-8.25-8.25-8.25S3.75 7.444 3.75 12c0 1.386.338 2.692.938 3.844L3 21l5.344-1.688A8.193 8.193 0 0012 20.25c4.556 0 8.25-3.694 8.25-8.25z" />
@@ -645,6 +993,62 @@
       revealEls.forEach(el => observer.observe(el));
     }
     window.addEventListener('DOMContentLoaded', revealOnScroll);
+    
+    // Back to Top Button
+    const backToTopBtn = document.getElementById('backToTop');
+    const navbar = document.getElementById('navbar');
+    
+    window.addEventListener('scroll', function() {
+      // Show/hide back to top button
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('show');
+      } else {
+        backToTopBtn.classList.remove('show');
+      }
+      
+      // Add shadow to navbar when scrolled
+      if (window.pageYOffset > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    backToTopBtn.addEventListener('click', function() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
+    // Mobile Menu Toggle
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const openMobileMenuBtn = document.getElementById('openMobileMenu');
+    const closeMobileMenuBtn = document.getElementById('closeMobileMenu');
+    const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+    
+    // Open mobile menu
+    openMobileMenuBtn.addEventListener('click', function() {
+      mobileMenu.classList.add('active');
+      mobileMenuOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+    });
+    
+    // Close mobile menu
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('active');
+      mobileMenuOverlay.classList.remove('active');
+      document.body.style.overflow = ''; // Restore scrolling
+    }
+    
+    closeMobileMenuBtn.addEventListener('click', closeMobileMenu);
+    mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+    
+    // Close menu when clicking on a link
+    mobileMenuLinks.forEach(link => {
+      link.addEventListener('click', closeMobileMenu);
+    });
   </script>
   <footer class="bg-orange-500 text-white text-center py-4 mt-10 rounded-t-2xl shadow-inner">
     &copy; २०२५ सार्थक मसाले. सर्व हक्क राखीव.
