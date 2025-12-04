@@ -34,7 +34,7 @@
 <html lang="mr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <title>सार्थक मसाले - मुख्यपृष्ठ</title>
   
   <!-- SEO Meta Tags -->
@@ -52,10 +52,25 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <style>
-    body { font-family: 'Tiro Devanagari Marathi', 'Baloo 2', sans-serif; transition: background 0.5s, color 0.5s; }
+    * { box-sizing: border-box; }
+    html { overflow-x: hidden; width: 100%; }
+    body { 
+      font-family: 'Tiro Devanagari Marathi', 'Baloo 2', sans-serif; 
+      transition: background 0.5s, color 0.5s; 
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
+      margin: 0;
+      padding: 0;
+    }
     h1, h2, h3, h4, h5, h6, nav { font-family: 'Baloo 2', 'Tiro Devanagari Marathi', sans-serif; }
     .fade-in { opacity: 0; transform: translateY(30px); animation: fadeInUp 1s forwards; }
     @keyframes fadeInUp { to { opacity: 1; transform: none; } }
+    
+    /* Prevent horizontal overflow */
+    section { overflow-x: hidden; max-width: 100%; }
+    img { max-width: 100%; height: auto; display: block; }
+    table { width: 100%; table-layout: fixed; }
     .theme-dark { background: #18181b !important; color: #f3f4f6 !important; }
     .theme-dark nav { background: #27272a !important; }
     .theme-dark .bg-white { background: #232323 !important; }
@@ -132,7 +147,35 @@
       .product-grid { grid-template-columns: repeat(1, 1fr) !important; }
       .machine-grid { grid-template-columns: repeat(1, 1fr) !important; }
       .hero-buttons { flex-direction: column; gap: 0.5rem; }
-      .price-table-container { overflow-x: auto; }
+      .price-table-container { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      
+      /* Force proper mobile sizing */
+      body { font-size: 16px; }
+      h1 { font-size: 2rem !important; }
+      h2 { font-size: 1.5rem !important; }
+      h3 { font-size: 1.25rem !important; }
+      
+      /* Ensure all containers fit */
+      .max-w-6xl, .max-w-5xl, .max-w-4xl, .max-w-3xl { 
+        max-width: 100% !important; 
+        padding-left: 1rem !important; 
+        padding-right: 1rem !important; 
+      }
+      
+      /* Fix table overflow */
+      table td, table th { 
+        white-space: nowrap; 
+        font-size: 0.875rem !important;
+        padding: 0.5rem !important;
+      }
+      
+      /* Fix image containers */
+      img { 
+        max-width: 100% !important; 
+        width: 100% !important; 
+        height: auto !important; 
+        object-fit: cover;
+      }
     }
     
     /* Navbar Styles */
@@ -349,10 +392,10 @@
   
   <!-- Hero Section (Home) -->
   <section id="home" class="bg-gradient-to-br from-orange-200 via-yellow-100 to-green-200 py-12 md:py-20" data-aos="fade-up">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center px-6 gap-10">
-      <div class="flex-1">
-        <h1 class="text-4xl md:text-6xl font-extrabold text-orange-600 mb-4 animate-bounce gradient-text">सार्थक मसाले</h1>
-        <p class="text-xl md:text-2xl text-yellow-700 font-semibold mb-6">चव आणि सुवास यांचा सार्थक अनुभव</p>
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center px-4 md:px-6 gap-6 md:gap-10">
+      <div class="flex-1 w-full">
+        <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold text-orange-600 mb-4 animate-bounce gradient-text break-words">सार्थक मसाले</h1>
+        <p class="text-lg sm:text-xl md:text-2xl text-yellow-700 font-semibold mb-6 break-words">चव आणि सुवास यांचा सार्थक अनुभव</p>
         <div class="flex flex-col sm:flex-row gap-4 hero-buttons">
           <a href="#products" class="inline-block bg-gradient-to-r from-orange-500 via-yellow-400 to-green-500 hover:from-orange-600 hover:to-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 scale-100 hover:scale-105 text-center">
             <i class="ph ph-shopping-bag mr-2"></i>आमची उत्पादने पहा
@@ -362,8 +405,8 @@
           </a>
         </div>
       </div>
-      <div class="flex-1 flex justify-center">
-        <img src="https://i.ibb.co/yBFTmsvJ/sarthak-masale.jpg" alt="मसाल्यांचे चित्र" class="rounded-3xl shadow-2xl border-4 border-yellow-300 w-full max-w-md">
+      <div class="flex-1 flex justify-center w-full">
+        <img src="sarthak masale.jpg" alt="सार्थक मसाले लोगो" class="rounded-3xl shadow-2xl border-4 border-yellow-300 w-full max-w-md" style="max-width: 100%; height: auto;">
       </div>
     </div>
     <!-- Enhanced Spice Images Grid -->
@@ -522,9 +565,9 @@
         शेवटचे अद्यतन: १० नोव्हेंबर २०२५
       </p>
       
-      <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border-4 border-orange-300 price-table-container">
-        <div class="overflow-x-auto">
-          <table class="w-full">
+      <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border-4 border-orange-300">
+        <div class="overflow-x-auto price-table-container" style="-webkit-overflow-scrolling: touch;">
+          <table class="w-full" style="min-width: 500px;">
             <thead class="bg-gradient-to-r from-orange-500 via-yellow-500 to-green-500 text-white">
               <tr>
                 <th class="px-6 py-4 text-left text-lg font-bold">अनुक्रमांक</th>
@@ -864,7 +907,7 @@
           <p class="text-gray-800 mb-2">“गुणवत्तेवर पूर्ण विश्वास! पारंपरिक चवीसाठी मी फक्त सार्थक मसालेच वापरते.”</p>
           <span class="text-green-700 font-semibold">- आशा जाधव</span>
         </div>
-  <div class="bg-white rounded-xl shadow-md p-6" data-aos="fade-up" data-aos-delay="300">
+  <div class="bg-white rounded-xl shadow-md p-6" data-aos="fade-ubudp" data-aos-delay="300">
           <p class="text-gray-800 mb-2">“हळद आणि लाल तिखट खूपच शुद्ध आणि रंगदार आहे. धन्यवाद!”</p>
           <span class="text-green-700 font-semibold">- राजेश शिंदे</span>
         </div>
